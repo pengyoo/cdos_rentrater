@@ -14,21 +14,27 @@ class UserProfile(models.Model):
     # One to one relationship with the django build-in User model
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
+    def __str__(self) -> str:
+        return self.user.username
+
 
 # Image Model
-class ImageModel(models.Model):
+class Image(models.Model):
 
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=255)
     url = models.URLField()
     sort = models.IntegerField()
 
+    def __str__(self) -> str:
+        return self.title
+
     class Meta:
         ordering = ['sort']
 
 
 # Property Model
-class PropertyModel(models.Model):
+class Property(models.Model):
 
     user = models.ForeignKey(
         User, on_delete=models.PROTECT, related_name='properties')
@@ -50,26 +56,38 @@ class PropertyModel(models.Model):
     # average rating
     rating = models.DecimalField(max_digits=2, decimal_places=1)
 
-    images = models.ManyToManyField(ImageModel)
+    images = models.ManyToManyField(Image)
+
+    def __str__(self) -> str:
+        return self.address
 
     class Meta:
         ordering = ['created_at']
 
 
 # Review Model
-class ReviewModel(models.Model):
+class Review(models.Model):
     property = models.ForeignKey(
-        PropertyModel, on_delete=models.PROTECT, related_name='reviews')
+        Property, on_delete=models.PROTECT, related_name='reviews')
     user = models.ForeignKey(
         User, on_delete=models.PROTECT, related_name='reviews')
     rating = models.DecimalField(max_digits=2, decimal_places=1)
     review = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self) -> str:
+        return self.review[:50] + '...'
+
+    class Meta:
+        ordering = ['created_at']
+
 
 # Reply Model
-class ReplyModel(models.Model):
-    review = models.OneToOneField(ReviewModel, on_delete=models.PROTECT)
+class Reply(models.Model):
+    review = models.OneToOneField(Review, on_delete=models.PROTECT)
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     reply = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return self.reply[:50] + '...'
