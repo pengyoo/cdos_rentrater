@@ -25,7 +25,7 @@
                 <label for="address">Address</label>
                 {% if form.address.errors %}<div class="text-danger" role="alert">{{ form.address.errors }}</div>{% endif %}
             </div>
-            <div class="form-floating">
+            <div class="form-floating mt-3">
                 <input type="text"
                        class="form-control"
                        id="area"
@@ -54,17 +54,13 @@
                 </div>
                 <div class="col-6">
                     <div class="form-floating mt-3">
-                        <select type="text"
-                                class="form-control"
-                                id="room_type"
-                                name="room_type"
-                                placeholder="Room type">
-                            <option value="Single Room">Single Room</option>
-                            <option value="Double Room">Double Room</option>
-                            <option value="Ensuite">Ensuite</option>
-                        </select>
-                        <label for="room_type">Room Type</label>
-                        {% if form.room_type.errors %}<div class="text-danger" role="alert">{{ form.room_type.errors }}</div>{% endif %}
+                        <input type="text"
+                               class="form-control"
+                               id="eircode"
+                               name="eircode"
+                               placeholder="Eircode">
+                        <label for="eircode">Eircode</label>
+                        {% if form.eircode.errors %}<div class="text-danger" role="alert">{{ form.eircode.errors }}</div>{% endif %}
                     </div>
                 </div>
             </div>

@@ -65,13 +65,9 @@ class AddPropertyView(CreateView):
     form_class = forms.PropertyForm
     success_url = reverse_lazy("home")
 
-    # Check user type, only landlords are allowed to perform property adding
+    # associate property with user
     def form_valid(self, form):
         user = self.request.user
-
-        if not user.profile.is_landlord:
-            error_message = "You are not authorized to add a property."
-            return render(self.request, self.template_name, {'form': form, 'error_message': error_message})
 
         form.instance.user = user
         return super().form_valid(form)

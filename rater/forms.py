@@ -28,5 +28,5 @@ class PropertyForm(forms.ModelForm):
 
     class Meta:
         model = models.Property
-        fields = ['address', 'area', 'property_type', 'room_type',
+        fields = ['address', 'area', 'property_type', 'eircode',
                   'gender_preference', 'owner_occupied', 'description']

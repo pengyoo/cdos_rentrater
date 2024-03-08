@@ -37,12 +37,14 @@ class Image(models.Model):
 # Property Model
 class Property(models.Model):
 
+    eircode = models.CharField(max_length=10, unique=True, null=True)
     user = models.ForeignKey(
         User, on_delete=models.PROTECT, related_name='properties')
+    landlord = models.ForeignKey(
+        User, on_delete=models.SET_NULL, related_name='my_properties', null=True)
     address = models.TextField()
     area = models.CharField(max_length=30)
     property_type = models.CharField(max_length=50)
-    room_type = models.CharField(max_length=50)
 
     GENDER_CHOICES = (
         ('B', 'Male/Female'),
