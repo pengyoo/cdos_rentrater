@@ -51,9 +51,27 @@ class AboutView(TemplateView):
 # Sign up view: display sign up form and register a user through post request
 class SignUpView(CreateView):
     template_name = 'rater/signup.html'
-    form_class = forms.UserSignUpForm
+    form_class = forms.SignUpForm
     success_url = reverse_lazy("signin")
 
     # def form_valid(self, form):
     #     form.send_email()
     #     return super().form_valid(form)
+
+
+# Add Property View
+class AddPropertyView(CreateView):
+    template_name = 'rater/add-property.html'
+    form_class = forms.PropertyForm
+    success_url = reverse_lazy("home")
+
+    # Check user type, only landlords are allowed to perform property adding
+    def form_valid(self, form):
+        user = self.request.user
+
+        if not user.profile.is_landlord:
+            error_message = "You are not authorized to add a property."
+            return render(self.request, self.template_name, {'form': form, 'error_message': error_message})
+
+        form.instance.user = user
+        return super().form_valid(form)

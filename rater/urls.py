@@ -11,6 +11,7 @@ from . import views
 urlpatterns = [
     path('', views.HomeView.as_view(), name="home"),
     path("property/<int:pk>/", views.PropertyDetailView.as_view(), name="property"),
+    path("post/", views.AddPropertyView.as_view(), name="add_property"),
     path('about/', views.AboutView.as_view(), name="about"),
     path('signup/', views.SignUpView.as_view(), name='signup'),
     path('signin/', auth_views.LoginView.as_view(template_name='rater/signin.html'), name='signin'),
