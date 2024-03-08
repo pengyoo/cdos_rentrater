@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title> {{ property.address }} - RentRater</title>
+{% endblock %} 
+
+{% block main %}
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    {% for image in property.images.all %}
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.counter0 == 0 %} active {% endif %}"
+          aria-current="{% if forloop.counter0 == 0 %} true {% endif %}" aria-label="Slide {{ forloop.counter0 }}"></button>
+    {% endfor %}
+  </div>
+  <div class="carousel-inner">
+    
+     {% for image in property.images.all %}
+        <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+            <img width="100%" height="400px" class="object-fit-cover"
+                src="{{image.url}}" />
+        </div>
+      {% endfor %}
+
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div id="attributes" class="card mt-3 p-3" style="border: none; border-radius: 0%;">
+  <h3 style="color: black;">{{ property.address }}</h3>
+
+  <div class="d-flex justify-content-start">
+      <div>{{ property.property_type }}</div>
+      <div class="ms-4">{{ property.room_type }}</div>
+      <div class="ms-4">Preferences: {{ property.gender_preference }}</div>
+      <div class="ms-4">Owner Occupied: {{ property.owner_occupied }}</div>
+  </div>
+
+  <div class="mt-3">
+      <h4>Description</h4>
+      {{ property.description }}
+  </div>
+</div>
+
+<div id="reviews" class="card mt-3 p-3" style="border: none; border-radius: 0%;">
+  <h4 class="py-2">Reviews</h4>
+
+  {% for review in reviews %}
+  <div class="mt-3">
+      <div class="d-flex justify-content-start">
+          <div>
+              <img width="35" class="rounded-circle" style="display: inline-flex;"
+                  src="{% if review.user.url %}{{ review.user.url }}{% elif not review.user.url %}https://api.dicebear.com/7.x/lorelei/svg{% endif %}" />
+          </div>
+          <div class="p-3 ms-2" style="background-color: #eeeeee; width: 100%;">
+              <div class="d-flex justify-content-between">
+                  <h6>{{review.user.username}}</h6>
+                  <span class="badge bg-secondary ms-2" style="font-size: large;"><svg
+                          xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                          fill="currentColor" class="bi bi-bookmark-star-fill"
+                          viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                              d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5M8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.18.18 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.18.18 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.18.18 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.18.18 0 0 1-.134-.098z" />
+                      </svg> {{review.rating}}</span>
+              </div>
+
+              <div style="font-size: 14px; color: gray;">
+                  {{review.review}}
+              </div>
+              <div class="mt-2 p-1 d-flex justify-content-start align-items-baseline"
+                  style="background-color: #ffffff; width: 100%;">
+                  <div>
+                          <img width="35" class="rounded-circle" style="display: inline-flex;"
+                  src="{% if review.reply.user.url %}{{ review.reply.user.url }}{% elif not review.reply.user.url %}https://api.dicebear.com/7.x/lorelei/svg{% endif %}" />
+    
+                        </div>
+                  <div class="p-2">
+                      <div class="d-flex justify-content-between">
+                          <h6> {{review.reply.user.username}}</h6>
+
+                      </div>
+
+                      <div style="font-size: 14px; color: gray;">
+                        {{review.reply.reply}}
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  {% endfor %}
+
+</div>
+
+<div id="form" class="mt-3 card p-3" style="border: none; border-radius: 0%;">
+  <h4 class="py-2">Share my experience ...</h4>
+  <div class="d-flex justify-content-start">
+      <div>
+          <img width="35" class="rounded-circle" style="display: inline-flex;"
+              src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/af/af7b38b9b302fb00262847bddf216a0d637382d3_full.jpg" />
+
+      </div>
+      <div class="ms-2" style="width: 100%;">
+          <div class="d-flex justify-content-start">
+              <span style="font-size: large; font-weight: bolder;">Rating:</span> <output
+                  class="badge bg-secondary ms-2" style="font-size: large;">2.5</output>
+              <input type="range" class="form-range ms-2" min="0" max="5" value="2.5" step="0.5"
+                  id="customRange3" oninput="this.previousElementSibling.value = this.value">
+          </div>
+          <textarea class="form-control rounded-0 mt-2" rows="4"
+              style="background-color: #eeeeee;" id="exampleFormControlTextarea1"
+              placeholder="Share my experience ..."></textarea>
+
+      </div>
+  </div>
+  <div class="d-flex justify-content-end mt-3">
+      <button class="btn btn-primary">Submit</button>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block side %}
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+      <h2 class="accordion-header">
+          <div class="accordion-button" data-bs-target="#panelsStayOpen-collapseOne"
+              aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+              Rating
+          </div>
+      </h2>
+      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body text-center text-secondary align-items-center"
+              style="font-size: 10rem; font-weight: bolder;">
+              {{property.rating}}
+          </div>
+      </div>
+  </div>
+
+</div>
+{% endblock %}
+
+

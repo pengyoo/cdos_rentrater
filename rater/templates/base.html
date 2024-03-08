@@ -111,7 +111,7 @@
             {% endblock %}
           </div>
       
-          <div class="col-lg-3 mt-4">
+          <div class="col-lg-3">
             {% block side %}
             {% endblock %}
           </div>
@@ -143,10 +143,29 @@
       </footer>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      let rating = 0
+      let area = ''
+      
+      const filterStar = (star) => {
+        const location = window.location;
+        let url = location.protocol + '//' + location.host + location.pathname;
+        url = url + "?rating__gte="+star;
+        window.location.href = url;
+      }
+
+     
+
+     
+    </script>
+
   </body>
 </html>

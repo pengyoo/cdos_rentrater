@@ -6,4 +6,5 @@ from . import views
 
 urlpatterns = [
     path('', views.HomeView.as_view()),
+    path("property/<int:pk>/", views.PropertyDetailView.as_view(), name="property"),
 ]
