@@ -42,9 +42,5 @@ class AboutView(TemplateView):
     template_name = 'rater/about.html'
 
 
-class SignInView(TemplateView):
-    template_name = 'rater/signin.html'
-
-
 class SignUpView(TemplateView):
     template_name = 'rater/signup.html'

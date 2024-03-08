@@ -1,47 +1,51 @@
 {% extends "base.html" %}
-
 {% block style %}
-.form-signin {
-    max-width: 330px;
+    .form-signin {
+    max-width: 400px;
     padding: 1rem;
-}
-
-.form-signin .form-floating:focus-within {
+    }
+    .form-signin .form-floating:focus-within {
     z-index: 2;
-}
-
-.form-signin input[type="email"] {
+    }
+    .form-signin input[type="email"] {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
-}
-
-.form-signin input[type="password"] {
+    }
+    .form-signin input[type="password"] {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-}
-{% endblock %}
-
+    }
+{% endblock style %}
 {% block content %}
-<main class="form-signin w-100 m-auto mt-5">
-    <form>
-        <h1 class="h3 mb-3 fw-normal">Please register</h1>
-
-        <div class="form-floating">
-            <input type="text" class="form-control" id="floatingUsername" placeholder="username">
-            <label for="floatingUsername">Username</label>
-        </div>
-        <div class="form-floating mt-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
-        </div>
-        <div class="form-floating mt-3">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="">
-            <label for="floatingPassword">Password</label>
-        </div>
-
-        <button class="btn btn-primary w-100 py-2" style="color: #ffffff;" type="submit">Register</button>
-    </form>
-</main>
-{% endblock %}
+    <main class="card p-4 form-signin w-100 m-auto mt-5">
+        <form>
+            <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+            <div class="form-floating">
+                <input type="text"
+                       class="form-control"
+                       id="floatingUsername"
+                       placeholder="username">
+                <label for="floatingUsername">Username</label>
+            </div>
+            <div class="form-floating mt-3">
+                <input type="email"
+                       class="form-control"
+                       id="floatingInput"
+                       placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating mt-3">
+                <input type="password"
+                       class="form-control"
+                       id="floatingPassword"
+                       placeholder="">
+                <label for="floatingPassword">Password</label>
+            </div>
+            <button class="btn btn-primary w-100 py-2"
+                    style="color: #ffffff"
+                    type="submit">Register</button>
+        </form>
+    </main>
+{% endblock content %}

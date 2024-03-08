@@ -1,19 +1,17 @@
 {% extends "base.html" %}
-
 {% block content %}
-<main>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9">
-        {% block main %}
-        {% endblock %}
-      </div>
-  
-      <div class="col-lg-3">
-        {% block side %}
-        {% endblock %}
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          {% block main %}
+          {% endblock main %}
+        </div>
+        <div class="col-lg-3">
+          {% block side %}
+          {% endblock side %}
+        </div>
       </div>
     </div>
-  </div>
-</main>
-{% endblock %}
+  </main>
+{% endblock content %}

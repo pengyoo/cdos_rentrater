@@ -108,3 +108,6 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Redirect to home page after sign in
+LOGIN_REDIRECT_URL = '/'
