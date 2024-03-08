@@ -10,5 +10,5 @@ class PropertyFilter(django_filters.FilterSet):
         model = models.Property
         fields = {
             'rating': ['lte', 'gte'],
-            'area': ['contains'],
+            'address': ['contains'],
         }

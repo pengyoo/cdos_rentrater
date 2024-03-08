@@ -64,12 +64,23 @@
             <div class="mt-3">
                 <div class="d-flex justify-content-start">
                     <div>
-                        <img width="35"
-                             class="rounded-circle"
-                             style="display: inline-flex"
-                             src="{% if review.user.url %}{{ review.user.url }}{% elif not review.user.url %}https://api.dicebear.com/7.x/lorelei/svg{% endif %}" />
+                        {% if review.user.profile.avatar_url %}
+                            <img src="{{ review.user.profile.avatar_url }}"
+                                 class="rounded-circle"
+                                 style="display: inline-flex" />
+                        {% elif not review.user.profile.avatar_url %}
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="32"
+                                 height="32"
+                                 fill="currentColor"
+                                 class="bi bi-person-circle"
+                                 viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                            </svg>
+                        {% endif %}
                     </div>
-                    <div class="p-3 ms-2" style="background-color: #eeeeee; width: 100%;">
+                    <div class="p-2 ms-2" style="background-color: #eeeeee; width: 100%;">
                         <div class="d-flex justify-content-between">
                             <h6>{{ review.user.username }}</h6>
                             <span class="badge ms-2 {% if property.rating >= 3 %} bg-success {% elif property.rating < 3 and property.rating >= 2 %} bg-warning {% elif property.rating < 2 %} bg-danger {% endif %}"
@@ -89,14 +100,25 @@
                              style="background-color: #ffffff;
                                     width: 100%">
                             <div>
-                                <img width="35"
-                                     class="rounded-circle"
-                                     style="display: inline-flex"
-                                     src="{% if review.reply.user.url %}{{ review.reply.user.url }}{% elif not review.reply.user.url %}https://api.dicebear.com/7.x/lorelei/svg{% endif %}" />
+                                {% if review.reply.user.profile.avatar_url %}
+                                    <img src="{{ review.reply.user.profile.avatar_url }}"
+                                         class="rounded-circle"
+                                         style="display: inline-flex" />
+                                {% elif not review.reply.user.profile.avatar_url %}
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         width="32"
+                                         height="32"
+                                         fill="currentColor"
+                                         class="bi bi-person-circle"
+                                         viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                                    </svg>
+                                {% endif %}
                             </div>
                             <div class="p-2">
-                                <span class="badge text-bg-danger">Landlord Reply :</span>
-                                <div style="font-size: 14px; color: gray;">{{ review.reply.reply }}</div>
+                                <span class="badge text-bg-danger">Landlord Reply</span>
+                                <div class="p-2" style="font-size: 14px; color: gray;">{{ review.reply.reply }}</div>
                             </div>
                         </div>
                     </div>
@@ -111,10 +133,21 @@
         <h4 class="py-2">Share my experience ...</h4>
         <div class="d-flex justify-content-start">
             <div>
-                <img width="35"
-                     class="rounded-circle"
-                     style="display: inline-flex"
-                     src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/af/af7b38b9b302fb00262847bddf216a0d637382d3_full.jpg" />
+                {% if user.profile.avatar_url %}
+                    <img src="{{ user.profile.avatar_url }}"
+                         class="rounded-circle"
+                         style="display: inline-flex" />
+                {% elif not user.profile.avatar_url %}
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="32"
+                         height="32"
+                         fill="currentColor"
+                         class="bi bi-person-circle"
+                         viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                    </svg>
+                {% endif %}
             </div>
             <div class="ms-2" style="width: 100%;">
                 <div class="d-flex justify-content-start">

@@ -12,7 +12,8 @@ class UserProfile(models.Model):
     is_landlord = models.BooleanField(default=False)
 
     # One to one relationship with the django build-in User model
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name='profile')
 
     def __str__(self) -> str:
         return self.user.username
