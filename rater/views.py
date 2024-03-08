@@ -3,6 +3,7 @@ from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django_filters.views import FilterView
 from django.views.generic import DetailView
+from django.views.generic import ListView
 from django.views.generic import TemplateView
 from . import models
 from . import filters
@@ -14,7 +15,7 @@ class HomeView(FilterView):
     context_object_name = 'properties'
     template_name = "rater/index.html"
 
-    paginate_by = 2
+    paginate_by = 10
     filterset_class = filters.PropertyFilter
 
     queryset = models.Property.objects.prefetch_related('images').all()
@@ -39,3 +40,11 @@ class PropertyDetailView(DetailView):
 
 class AboutView(TemplateView):
     template_name = 'rater/about.html'
+
+
+class SignInView(TemplateView):
+    template_name = 'rater/signin.html'
+
+
+class SignUpView(TemplateView):
+    template_name = 'rater/signup.html'
