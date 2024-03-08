@@ -3,6 +3,7 @@ from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django_filters.views import FilterView
 from django.views.generic import DetailView
+from django.views.generic import TemplateView
 from . import models
 from . import filters
 
@@ -34,3 +35,7 @@ class PropertyDetailView(DetailView):
             .filter(
             property_id=property_id)
         return context
+
+
+class AboutView(TemplateView):
+    template_name = 'rater/about.html'

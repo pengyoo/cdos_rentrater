@@ -14,6 +14,10 @@
       body {
         background-color: #eeeeee;
       }
+
+      {% block style %}
+      
+      {% endblock %}
     </style>
   </head>
 
@@ -49,17 +53,17 @@
               >
             </li>
             <li>
-              <a href="index.html" class="nav-link px-2 link-body-emphasis"
+              <a href="/?rating__gte=5" class="nav-link px-2 link-body-emphasis"
                 >Excellence List</a
               >
             </li>
             <li>
-              <a href="index.html" class="nav-link px-2 link-body-emphasis"
+              <a href="/?rating__lte=2" class="nav-link px-2 link-body-emphasis"
                 >Concerns List</a
               >
             </li>
             <li>
-              <a href="about.html" class="nav-link px-2 link-body-emphasis"
+              <a href="/about" class="nav-link px-2 link-body-emphasis"
                 >About</a
               >
             </li>
@@ -103,22 +107,9 @@
       </div>
     </header>
 
-    <main>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-9">
-            {% block main %}
-            {% endblock %}
-          </div>
-      
-          <div class="col-lg-3">
-            {% block side %}
-            {% endblock %}
-          </div>
-        </div>
-      </div>
-    </main>
-
+    {% block content %}
+    {% endblock %}
+  
     <div class="container">
       <footer
         class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
@@ -127,7 +118,7 @@
 
         <ul class="nav col-md-4 justify-content-end">
           <li class="nav-item">
-            <a href="index.html" class="nav-link px-2 text-body-secondary"
+            <a href="/" class="nav-link px-2 text-body-secondary"
               >Home</a
             >
           </li>
@@ -135,7 +126,7 @@
             <a href="#" class="nav-link px-2 text-body-secondary">FAQs</a>
           </li>
           <li class="nav-item">
-            <a href="about.html" class="nav-link px-2 text-body-secondary"
+            <a href="/about" class="nav-link px-2 text-body-secondary"
               >About</a
             >
           </li>

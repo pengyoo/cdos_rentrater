@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base-columns.html" %}
 
 {% block title %}
 <title> RentRater - Home </title>
@@ -10,7 +10,7 @@
     class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 mb-3"
   >
     {% for property in properties %}
-    <a class="text-decoration-none" href="/property/{{ property.id }}">
+    <a class="text-decoration-none" href="{% url 'property' property.id %}">
       <div class="col" role="button">
         <div
           class="card card-cover h-100 overflow-hidden text-bg-dark shadow-lg"
