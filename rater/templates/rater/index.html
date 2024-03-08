@@ -16,7 +16,7 @@
                    style="min-height: 350px">
                 <ul class="d-flex list-unstyled p-2 bg-dark" style="--bs-bg-opacity: 0.5">
                   <li class="me-auto">
-                    <span class="badge  ms-2 {% if property.rating >= 3 %} bg-success {% elif property.rating < 3 and property.rating >= 2 %} bg-warning {% elif property.rating < 2 %} bg-danger {% endif %}"
+                    <span class="badge  ms-2 {% if property.rating >= 3 %} bg-success {% elif property.rating < 3 and property.rating >= 2 %} bg-secondary {% elif property.rating == 0 %} bg-light {% elif property.rating < 0 and property.rating > -2 %} bg-warning {% elif property.rating < -2 %} bg-danger {% endif %}"
                           style="font-size: 16px">
                       <svg xmlns="http://www.w3.org/2000/svg"
                            width="16"
@@ -118,11 +118,11 @@
            class="accordion-collapse collapse show"
            data-bs-parent="#accordionFlushExample">
         <ul class="list-group">
-          <li class="list-group-item {% if not request.GET.rating__gte or request.GET.rating__gte == '0' %}bg-body-tertiary{% endif %}"
+          <li class="list-group-item {% if not request.GET.rating__gte and not request.GET.rating__lte %}bg-body-tertiary{% endif %}"
               role="button"
               style="border-radius: 0%"
-              onclick="filterStar(0)">
-            <div class="{% if not request.GET.rating__gte or request.GET.rating__gte == '0' %} text-success {% endif %}">
+              onclick="filterStar(-5)">
+            <div class="{% if not request.GET.rating__gte and not request.GET.rating__lte %} text-success {% endif %}">
               <h6 class="my-0">All</h6>
             </div>
           </li>
@@ -135,22 +135,28 @@
               <!-- <small class="text-body-secondary">Brief description</small> -->
             </div>
           </li>
-          <li class="list-group-item {% if request.GET.rating__gte == '4' %}bg-body-tertiary{% endif %}"
-              style="border-radius: 0%"
-              role="button"
-              onclick="filterStar(4)">
-            <div class="{% if request.GET.rating__gte == '4' %} text-success {% endif %}">
-              <h6 class="my-0">4 Stars and above</h6>
-              <!-- <small class="text-body-secondary">Brief description</small> -->
-            </div>
-          </li>
           <li class="list-group-item {% if request.GET.rating__gte == '3' %}bg-body-tertiary{% endif %}"
               style="border-radius: 0%"
               role="button"
               onclick="filterStar(3)">
             <div class="{% if request.GET.rating__gte == '3' %} text-success {% endif %}">
               <h6 class="my-0">3 Stars and above</h6>
-              <!-- <small class="text-body-secondary">Brief description</small> -->
+            </div>
+          </li>
+          <li class="list-group-item {% if request.GET.rating__gte == '0' %}bg-body-tertiary{% endif %}"
+              style="border-radius: 0%"
+              role="button"
+              onclick="filterStar(0)">
+            <div class="{% if request.GET.rating__gte == '0' %} text-success {% endif %}">
+              <h6 class="my-0">0 Stars and above</h6>
+            </div>
+          </li>
+          <li class="list-group-item {% if request.GET.rating__lte == '-0.5' %}bg-body-tertiary{% endif %}"
+              style="border-radius: 0%"
+              role="button"
+              onclick="filterStar(-0.5)">
+            <div class="{% if request.GET.rating__lte == '-0.5' %} text-success {% endif %}">
+              <h6 class="my-0">Below 0 stars</h6>
             </div>
           </li>
         </ul>

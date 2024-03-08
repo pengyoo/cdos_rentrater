@@ -151,12 +151,12 @@
             </div>
             <div class="ms-2" style="width: 100%;">
                 <div class="d-flex justify-content-start">
-                    <span style="font-size: large; font-weight: bolder;">Rating:</span> <output class="badge bg-primary ms-2" style="font-size: large;">2.5</output>
+                    <span style="font-size: large; font-weight: bolder;">Rating:</span> <output class="badge bg-primary ms-2" style="font-size: large;">0.0</output>
                     <input type="range"
                            class="form-range ms-2"
-                           min="0"
+                           min="-5"
                            max="5"
-                           value="2.5"
+                           value="0.0"
                            step="0.5"
                            id="customRange3"
                            oninput="this.previousElementSibling.value = this.value">
@@ -184,8 +184,8 @@
             </h2>
             <div id="panelsStayOpen-collapseOne"
                  class="accordion-collapse collapse show">
-                <div class="accordion-body text-center align-items-center {% if property.rating >= 3 %} text-success {% elif property.rating < 3 and property.rating >= 2 %} text-warning {% elif property.rating < 2 %} text-danger {% endif %}"
-                     style="font-size: 10rem;
+                <div class="p-3 accordion-body text-center align-items-center {% if property.rating >= 3 %} text-success {% elif property.rating < 3 and property.rating >= 2 %} text-warning {% elif property.rating < 2 %} text-danger {% endif %}"
+                     style="font-size: 9rem;
                             font-weight: bolder">{{ property.rating }}</div>
             </div>
         </div>

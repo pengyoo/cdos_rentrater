@@ -63,7 +63,7 @@ class Property(models.Model):
         return self.address
 
     class Meta:
-        ordering = ['created_at']
+        ordering = ['-created_at']
 
 
 # Review Model

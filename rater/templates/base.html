@@ -28,15 +28,21 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
     <script>
-      let rating = 0
+      let rating = -5
       let area = ''
       const filterStar = (star) => {
+        
         const location = window.location;
         let url = location.protocol + '//' + location.host + location.pathname;
-        url = url + "?rating__gte="+star;
+        if(star >= 0) {
+          url = url + "?rating__gte="+star;
+        } else if(star == -5) {
+          url = location.protocol + '//' + location.host + location.pathname;
+        } else {
+          url = url + "?rating__lte="+star;
+        }
         window.location.href = url;
       }
-     
     </script>
   </body>
 </html>

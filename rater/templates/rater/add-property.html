@@ -59,8 +59,9 @@
                                 id="room_type"
                                 name="room_type"
                                 placeholder="Room type">
-                            <option>Single Room</option>
-                            <option>Double Room</option>
+                            <option value="Single Room">Single Room</option>
+                            <option value="Double Room">Double Room</option>
+                            <option value="Ensuite">Ensuite</option>
                         </select>
                         <label for="room_type">Room Type</label>
                         {% if form.room_type.errors %}<div class="text-danger" role="alert">{{ form.room_type.errors }}</div>{% endif %}
