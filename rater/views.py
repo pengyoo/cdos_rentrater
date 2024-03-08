@@ -2,13 +2,17 @@ from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django_filters.views import FilterView
-from django.views.generic import DetailView
-from django.views.generic import ListView
-from django.views.generic import TemplateView
+from django.views.generic import DetailView, ListView, TemplateView, CreateView
+from django.contrib.auth.models import User
+from django.urls import reverse_lazy
+from django.contrib.auth.forms import UserCreationForm
+
 from . import models
 from . import filters
+from . import forms
 
 
+# Home page view
 class HomeView(FilterView):
 
     model = models.Property
@@ -21,6 +25,7 @@ class HomeView(FilterView):
     queryset = models.Property.objects.prefetch_related('images').all()
 
 
+# Property detail view: display a property and its reviews
 class PropertyDetailView(DetailView):
 
     model = models.Property
@@ -38,9 +43,17 @@ class PropertyDetailView(DetailView):
         return context
 
 
+# About page view
 class AboutView(TemplateView):
     template_name = 'rater/about.html'
 
 
-class SignUpView(TemplateView):
+# Sign up view: display sign up form and register a user through post request
+class SignUpView(CreateView):
     template_name = 'rater/signup.html'
+    form_class = forms.UserSignUpForm
+    success_url = reverse_lazy("signin")
+
+    # def form_valid(self, form):
+    #     form.send_email()
+    #     return super().form_valid(form)

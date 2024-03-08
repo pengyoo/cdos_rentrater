@@ -20,32 +20,51 @@
 {% endblock style %}
 {% block content %}
     <main class="card p-4 form-signin w-100 m-auto mt-5">
-        <form>
+        <form method="post">
+            {% csrf_token %}
             <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger pt-2 p-0" role="alert">{{ form.non_field_errors }}</div>
+            {% endif %}
             <div class="form-floating">
                 <input type="text"
                        class="form-control"
-                       id="floatingUsername"
-                       placeholder="username">
-                <label for="floatingUsername">Username</label>
+                       id="username"
+                       name="username"
+                       placeholder="Username">
+                <label for="username">Username</label>
+                {% if form.username.errors %}<div class="text-danger" role="alert">{{ form.username.errors }}</div>{% endif %}
             </div>
             <div class="form-floating mt-3">
                 <input type="email"
                        class="form-control"
-                       id="floatingInput"
+                       id="email"
+                       name="email"
                        placeholder="name@example.com">
-                <label for="floatingInput">Email address</label>
+                <label for="email">Email address</label>
+                {% if form.email.errors %}<div class="text-danger" role="alert">{{ form.email.errors }}</div>{% endif %}
             </div>
             <div class="form-floating mt-3">
                 <input type="password"
                        class="form-control"
-                       id="floatingPassword"
-                       placeholder="">
-                <label for="floatingPassword">Password</label>
+                       id="password"
+                       name="password1"
+                       placeholder="Password">
+                <label for="password">Password</label>
+                {% if form.password1.errors %}<div class="text-danger" role="alert">{{ form.password1.errors }}</div>{% endif %}
+            </div>
+            <div class="form-floating mt-3">
+                <input type="password"
+                       class="form-control"
+                       id="password"
+                       name="password2"
+                       placeholder="Repeat Password">
+                <label for="password">Repeat Password</label>
+                {% if form.password2.errors %}<div class="text-danger" role="alert">{{ form.password2.errors }}</div>{% endif %}
             </div>
             <button class="btn btn-primary w-100 py-2"
                     style="color: #ffffff"
-                    type="submit">Register</button>
+                    type="submit">Sign Up</button>
         </form>
     </main>
 {% endblock content %}
