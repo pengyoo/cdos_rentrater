@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/minty/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #eeeeee;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="p-2 mb-3 bg-primary" data-bs-theme="dark">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a class="navbar-brand" href="#" style="color: #ffffff;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-houses-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M7.207 1a1 1 0 0 0-1.414 0L.146 6.646a.5.5 0 0 0 .708.708L1 7.207V12.5A1.5 1.5 0 0 0 2.5 14h.55a2.5 2.5 0 0 1-.05-.5V9.415a1.5 1.5 0 0 1-.56-2.475l5.353-5.354z" />
+                        <path
+                            d="M8.793 2a1 1 0 0 1 1.414 0L12 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l1.854 1.853a.5.5 0 0 1-.708.708L15 8.207V13.5a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 4 13.5V8.207l-.146.147a.5.5 0 1 1-.708-.708z" />
+                    </svg></a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="index.html" class="nav-link active link-body-emphasis">Home</a></li>
+                    <li><a href="index.html" class="nav-link px-2 link-body-emphasis">Excellence List</a></li>
+                    <li><a href="index.html" class="nav-link px-2 link-body-emphasis">Concerns List</a></li>
+                    <li><a href="about.html" class="nav-link px-2 link-body-emphasis">About</a></li>
+                </ul>
+
+                <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                </form> -->
+                <button class="btn btn-secondary"><a class="nav-link" href="login.html">Sign In</a></button>
+                <button class="btn btn-light ms-2"><a class="nav-link" href="register.html">Sign Up</a></button>
+
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small">
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="container" id="custom-cards">
+                        <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 mt-1 mb-3">
+                            <div class="col">
+                                <div class="card card-cover h-100 overflow-hidden text-bg-dark shadow-lg"
+                                    style="background-image: url('https://media.daft.ie/eyJidWNrZXQiOiJtZWRpYW1hc3Rlci1zM2V1IiwiZWRpdHMiOnsib3ZlcmxheVdpdGgiOnsiYnVja2V0IjoibWVkaWFtYXN0ZXItczNldSIsIm9wdGlvbnMiOnsiZ3Jhdml0eSI6ImNlbnRyZSJ9LCJrZXkiOiJ3YXRlcm1hcmstZGFmdC1sb2dvLXh4bGFyZ2UtdjMucG5nIn0sInJlc2l6ZSI6eyJmaXQiOiJjb3ZlciIsIndpZHRoIjoxNDQwLCJoZWlnaHQiOjk2MH19LCJvdXRwdXRGb3JtYXQiOiJqcGVnIiwia2V5IjoiMS9mLzFmMzQ4NTBlMjUyZWRkNTJhOWVlYTNiMWUzNzY5OGI0LmpwZyJ9?signature=41b8947c7731825162c63dc36c44c7de483f21647989efbccb1faf44654c4e2d'); background-size: cover; background-repeat: no-repeat;">
+                                    <div class="d-flex flex-column h-100 text-shadow-1" style="min-height: 350px;">
+                                        <ul class="d-flex list-unstyled p-2 bg-dark" style="--bs-bg-opacity: .5;">
+                                            <li class="me-auto">
+                                                <span class="badge bg-secondary ms-2" style="font-size: 16px;"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-bookmark-star-fill"
+                                                        viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5M8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.18.18 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.18.18 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.18.18 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.18.18 0 0 1-.134-.098z" />
+                                                    </svg> 2.5</span>
+                                            </li>
+                                            <li class="d-flex align-items-center me-3">
+
+                                                <span
+                                                    style="font-weight: bolder; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                        fill="currentColor" class="bi bi-house-add-fill"
+                                                        viewBox="0 0 18 18">
+                                                        <path
+                                                            d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 1 1-1 0v-1h-1a.5.5 0 1 1 0-1h1v-1a.5.5 0 0 1 1 0" />
+                                                        <path
+                                                            d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
+                                                        <path
+                                                            d="m8 3.293 4.712 4.712A4.5 4.5 0 0 0 8.758 15H3.5A1.5 1.5 0 0 1 2 13.5V9.293z" />
+                                                    </svg> Double Room
+                                                </span>
+                                            </li>
+                                            <li class="d-flex align-items-center">
+                                                <span
+                                                    style="font-weight: bolder; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                        fill="currentColor" class="bi bi-geo-alt-fill"
+                                                        viewBox="0 0 18 18">
+                                                        <path
+                                                            d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                                                    </svg>
+                                                    Dundrum
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card card-cover h-100 overflow-hidden text-bg-dark shadow-lg"
+                                    style="background-image: url('https://media.daft.ie/eyJidWNrZXQiOiJtZWRpYW1hc3Rlci1zM2V1IiwiZWRpdHMiOnsib3ZlcmxheVdpdGgiOnsiYnVja2V0IjoibWVkaWFtYXN0ZXItczNldSIsIm9wdGlvbnMiOnsiZ3Jhdml0eSI6ImNlbnRyZSJ9LCJrZXkiOiJ3YXRlcm1hcmstZGFmdC1sb2dvLXh4bGFyZ2UtdjMucG5nIn0sInJlc2l6ZSI6eyJmaXQiOiJjb3ZlciIsIndpZHRoIjoxNDQwLCJoZWlnaHQiOjk2MH19LCJvdXRwdXRGb3JtYXQiOiJqcGVnIiwia2V5IjoiMS9mLzFmMzQ4NTBlMjUyZWRkNTJhOWVlYTNiMWUzNzY5OGI0LmpwZyJ9?signature=41b8947c7731825162c63dc36c44c7de483f21647989efbccb1faf44654c4e2d'); background-size: cover; background-repeat: no-repeat;">
+                                    <div class="d-flex flex-column h-100 text-shadow-1" style="min-height: 350px;">
+                                        <ul class="d-flex list-unstyled p-2 bg-dark" style="--bs-bg-opacity: .5;">
+                                            <li class="me-auto">
+                                                <span class="badge bg-secondary ms-2" style="font-size: 16px;"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-bookmark-star-fill"
+                                                        viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5M8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.18.18 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.18.18 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.18.18 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.18.18 0 0 1-.134-.098z" />
+                                                    </svg> 2.5</span>
+                                            </li>
+                                            <li class="d-flex align-items-center me-3">
+
+                                                <span
+                                                    style="font-weight: bolder; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                        fill="currentColor" class="bi bi-house-add-fill"
+                                                        viewBox="0 0 18 18">
+                                                        <path
+                                                            d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 1 1-1 0v-1h-1a.5.5 0 1 1 0-1h1v-1a.5.5 0 0 1 1 0" />
+                                                        <path
+                                                            d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
+                                                        <path
+                                                            d="m8 3.293 4.712 4.712A4.5 4.5 0 0 0 8.758 15H3.5A1.5 1.5 0 0 1 2 13.5V9.293z" />
+                                                    </svg> Double Room
+                                                </span>
+                                            </li>
+                                            <li class="d-flex align-items-center">
+                                                <span
+                                                    style="font-weight: bolder; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                        fill="currentColor" class="bi bi-geo-alt-fill"
+                                                        viewBox="0 0 18 18">
+                                                        <path
+                                                            d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                                                    </svg>
+                                                    Dundrum
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card card-cover h-100 overflow-hidden text-bg-dark shadow-lg"
+                                    style="background-image: url('https://media.daft.ie/eyJidWNrZXQiOiJtZWRpYW1hc3Rlci1zM2V1IiwiZWRpdHMiOnsib3ZlcmxheVdpdGgiOnsiYnVja2V0IjoibWVkaWFtYXN0ZXItczNldSIsIm9wdGlvbnMiOnsiZ3Jhdml0eSI6ImNlbnRyZSJ9LCJrZXkiOiJ3YXRlcm1hcmstZGFmdC1sb2dvLXh4bGFyZ2UtdjMucG5nIn0sInJlc2l6ZSI6eyJmaXQiOiJjb3ZlciIsIndpZHRoIjoxNDQwLCJoZWlnaHQiOjk2MH19LCJvdXRwdXRGb3JtYXQiOiJqcGVnIiwia2V5IjoiMS9mLzFmMzQ4NTBlMjUyZWRkNTJhOWVlYTNiMWUzNzY5OGI0LmpwZyJ9?signature=41b8947c7731825162c63dc36c44c7de483f21647989efbccb1faf44654c4e2d'); background-size: cover; background-repeat: no-repeat;">
+                                    <div class="d-flex flex-column h-100 text-shadow-1" style="min-height: 350px;">
+                                        <ul class="d-flex list-unstyled p-2 bg-dark" style="--bs-bg-opacity: .5;">
+                                            <li class="me-auto">
+                                                <span class="badge bg-secondary ms-2" style="font-size: 16px;"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-bookmark-star-fill"
+                                                        viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5M8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.18.18 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.18.18 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.18.18 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.18.18 0 0 1-.134-.098z" />
+                                                    </svg> 2.5</span>
+                                            </li>
+                                            <li class="d-flex align-items-center me-3">
+
+                                                <span
+                                                    style="font-weight: bolder; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                        fill="currentColor" class="bi bi-house-add-fill"
+                                                        viewBox="0 0 18 18">
+                                                        <path
+                                                            d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 1 1-1 0v-1h-1a.5.5 0 1 1 0-1h1v-1a.5.5 0 0 1 1 0" />
+                                                        <path
+                                                            d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
+                                                        <path
+                                                            d="m8 3.293 4.712 4.712A4.5 4.5 0 0 0 8.758 15H3.5A1.5 1.5 0 0 1 2 13.5V9.293z" />
+                                                    </svg> Double Room
+                                                </span>
+                                            </li>
+                                            <li class="d-flex align-items-center">
+                                                <span
+                                                    style="font-weight: bolder; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                        fill="currentColor" class="bi bi-geo-alt-fill"
+                                                        viewBox="0 0 18 18">
+                                                        <path
+                                                            d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                                                    </svg>
+                                                    Dundrum
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card card-cover h-100 overflow-hidden text-bg-dark shadow-lg"
+                                    style="background-image: url('https://media.daft.ie/eyJidWNrZXQiOiJtZWRpYW1hc3Rlci1zM2V1IiwiZWRpdHMiOnsib3ZlcmxheVdpdGgiOnsiYnVja2V0IjoibWVkaWFtYXN0ZXItczNldSIsIm9wdGlvbnMiOnsiZ3Jhdml0eSI6ImNlbnRyZSJ9LCJrZXkiOiJ3YXRlcm1hcmstZGFmdC1sb2dvLXh4bGFyZ2UtdjMucG5nIn0sInJlc2l6ZSI6eyJmaXQiOiJjb3ZlciIsIndpZHRoIjoxNDQwLCJoZWlnaHQiOjk2MH19LCJvdXRwdXRGb3JtYXQiOiJqcGVnIiwia2V5IjoiMS9mLzFmMzQ4NTBlMjUyZWRkNTJhOWVlYTNiMWUzNzY5OGI0LmpwZyJ9?signature=41b8947c7731825162c63dc36c44c7de483f21647989efbccb1faf44654c4e2d'); background-size: cover; background-repeat: no-repeat;">
+                                    <div class="d-flex flex-column h-100 text-shadow-1" style="min-height: 350px;">
+                                        <ul class="d-flex list-unstyled p-2 bg-dark" style="--bs-bg-opacity: .5;">
+                                            <li class="me-auto">
+                                                <span class="badge bg-secondary ms-2" style="font-size: 16px;"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-bookmark-star-fill"
+                                                        viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5M8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.18.18 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.18.18 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.18.18 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.18.18 0 0 1-.134-.098z" />
+                                                    </svg> 2.5</span>
+                                            </li>
+                                            <li class="d-flex align-items-center me-3">
+
+                                                <span
+                                                    style="font-weight: bolder; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                        fill="currentColor" class="bi bi-house-add-fill"
+                                                        viewBox="0 0 18 18">
+                                                        <path
+                                                            d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 1 1-1 0v-1h-1a.5.5 0 1 1 0-1h1v-1a.5.5 0 0 1 1 0" />
+                                                        <path
+                                                            d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
+                                                        <path
+                                                            d="m8 3.293 4.712 4.712A4.5 4.5 0 0 0 8.758 15H3.5A1.5 1.5 0 0 1 2 13.5V9.293z" />
+                                                    </svg> Double Room
+                                                </span>
+                                            </li>
+                                            <li class="d-flex align-items-center">
+                                                <span
+                                                    style="font-weight: bolder; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                        fill="currentColor" class="bi bi-geo-alt-fill"
+                                                        viewBox="0 0 18 18">
+                                                        <path
+                                                            d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                                                    </svg>
+                                                    Dundrum
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card card-cover h-100 overflow-hidden text-bg-dark shadow-lg"
+                                    style="background-image: url('https://media.daft.ie/eyJidWNrZXQiOiJtZWRpYW1hc3Rlci1zM2V1IiwiZWRpdHMiOnsib3ZlcmxheVdpdGgiOnsiYnVja2V0IjoibWVkaWFtYXN0ZXItczNldSIsIm9wdGlvbnMiOnsiZ3Jhdml0eSI6ImNlbnRyZSJ9LCJrZXkiOiJ3YXRlcm1hcmstZGFmdC1sb2dvLXh4bGFyZ2UtdjMucG5nIn0sInJlc2l6ZSI6eyJmaXQiOiJjb3ZlciIsIndpZHRoIjoxNDQwLCJoZWlnaHQiOjk2MH19LCJvdXRwdXRGb3JtYXQiOiJqcGVnIiwia2V5IjoiMS9mLzFmMzQ4NTBlMjUyZWRkNTJhOWVlYTNiMWUzNzY5OGI0LmpwZyJ9?signature=41b8947c7731825162c63dc36c44c7de483f21647989efbccb1faf44654c4e2d'); background-size: cover; background-repeat: no-repeat;">
+                                    <div class="d-flex flex-column h-100 text-shadow-1" style="min-height: 350px;">
+                                        <ul class="d-flex list-unstyled p-2 bg-dark" style="--bs-bg-opacity: .5;">
+                                            <li class="me-auto">
+                                                <span class="badge bg-secondary ms-2" style="font-size: 16px;"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-bookmark-star-fill"
+                                                        viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5M8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.18.18 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.18.18 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.18.18 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.18.18 0 0 1-.134-.098z" />
+                                                    </svg> 2.5</span>
+                                            </li>
+                                            <li class="d-flex align-items-center me-3">
+
+                                                <span
+                                                    style="font-weight: bolder; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                        fill="currentColor" class="bi bi-house-add-fill"
+                                                        viewBox="0 0 18 18">
+                                                        <path
+                                                            d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 1 1-1 0v-1h-1a.5.5 0 1 1 0-1h1v-1a.5.5 0 0 1 1 0" />
+                                                        <path
+                                                            d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
+                                                        <path
+                                                            d="m8 3.293 4.712 4.712A4.5 4.5 0 0 0 8.758 15H3.5A1.5 1.5 0 0 1 2 13.5V9.293z" />
+                                                    </svg> Double Room
+                                                </span>
+                                            </li>
+                                            <li class="d-flex align-items-center">
+                                                <span
+                                                    style="font-weight: bolder; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                        fill="currentColor" class="bi bi-geo-alt-fill"
+                                                        viewBox="0 0 18 18">
+                                                        <path
+                                                            d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                                                    </svg>
+                                                    Dundrum
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <div class="float-right">
+                                <ul class="pagination pagination-md">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#">&laquo;</a>
+                                    </li>
+                                    <li class="page-item active">
+                                        <a class="page-link" href="#">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">2</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">3</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">4</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">5</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">&raquo;</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-3 mt-4">
+                    <!-- <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-primary">Filter</span>
+                        <span class="badge bg-primary rounded-pill">3</span>
+                    </h4> -->
+
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseOne" aria-expanded="true"
+                                    aria-controls="flush-collapseOne">
+                                    Filter By Ratings
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse show"
+                                data-bs-parent="#accordionFlushExample">
+                                <ul class="list-group">
+                                    <li class="list-group-item bg-body-tertiary" role="button"
+                                        style="border-radius: 0%;">
+                                        <div class="text-success">
+                                            <h6 class="my-0">All</h6>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item" style="border-radius: 0%;" role="button">
+                                        <div>
+                                            <h6 class="my-0">5 Stars</h6>
+                                            <!-- <small class="text-body-secondary">Brief description</small> -->
+                                        </div>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                    aria-controls="flush-collapseTwo">
+                                    Filter By Areas
+                                </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button class="btn btn-primary mt-5" style="width: 100%;"><a class="nav-link" href="post.html">Post
+                            a
+                            property</a></button>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <p class="col-md-4 mb-0 text-body-secondary">&copy; 2024 Peng Yu</p>
+
+            <a href="/"
+                class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <svg class="bi me-2" width="40" height="32">
+                    <use xlink:href="#bootstrap" />
+                </svg>
+            </a>
+
+            <ul class="nav col-md-4 justify-content-end">
+                <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">About</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
