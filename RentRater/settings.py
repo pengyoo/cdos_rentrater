@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # add apps
-    'rater'
+    'rater',
 ]
 
 MIDDLEWARE = [
