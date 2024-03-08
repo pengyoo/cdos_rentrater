@@ -30,7 +30,7 @@
             >
               <li class="me-auto">
                 <span
-                  class="badge bg-secondary ms-2"
+                  class="badge  ms-2 {% if property.rating >= 3 %} bg-success {% elif property.rating < 3 and property.rating >= 2  %} bg-warning {% elif property.rating < 2 %} bg-danger {% endif %}"
                   style="font-size: 16px"
                   ><svg
                     xmlns="http://www.w3.org/2000/svg"
