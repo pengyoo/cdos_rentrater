@@ -11,4 +11,6 @@ class PropertyFilter(django_filters.FilterSet):
         fields = {
             'rating': ['lte', 'gte'],
             'address': ['contains'],
+            'user': ['exact'],
+            'landlord__id': ['exact'],
         }

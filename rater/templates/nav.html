@@ -67,17 +67,17 @@
                         {% endif %}
                     </a>
                     <ul class="dropdown-menu text-small">
-                        <li>
-                            <a class="dropdown-item" href="#">Welcome, {{ user.username }}</a>
+                        <li class="px-3">
+                            Welcome, {{ user.username }}
                         </li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="/?user={{user.id}}">I Published Properties</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="/?landlord__id={{user.id}}">My Owned Properties</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider" />

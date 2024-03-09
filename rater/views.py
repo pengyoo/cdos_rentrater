@@ -71,6 +71,9 @@ class AddPropertyView(CreateView):
         form.instance.user = user
         return super().form_valid(form)
 
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form))
+
     def get_success_url(self):
         return reverse_lazy('property', kwargs={'pk': self.object.pk})
 

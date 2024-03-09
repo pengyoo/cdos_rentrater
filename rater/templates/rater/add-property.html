@@ -21,6 +21,7 @@
                        class="form-control"
                        id="address"
                        name="address"
+                       value="{% if form.address.value %}{{ form.address.value }}{% endif %}"
                        placeholder="address">
                 <label for="address">Address</label>
                 {% if form.address.errors %}<div class="text-danger" role="alert">{{ form.address.errors }}</div>{% endif %}
@@ -30,6 +31,7 @@
                        class="form-control"
                        id="area"
                        name="area"
+                       value="{% if form.area.value %}{{ form.area.value }}{% endif %}"
                        placeholder="Area">
                 <label for="area">Area</label>
                 {% if form.area.errors %}<div class="text-danger" role="alert">{{ form.area.errors }}</div>{% endif %}
@@ -41,6 +43,7 @@
                                 class="form-control"
                                 id="property_type"
                                 name="property_type"
+                                value="{% if form.property_type.value %}{{ form.property_type.value }}{% endif %}"
                                 placeholder="Property type">
                             <option>Apartment</option>
                             <option>House</option>
@@ -58,6 +61,7 @@
                                class="form-control"
                                id="eircode"
                                name="eircode"
+                               value="{% if form.eircode.value %}{{ form.eircode.value }}{% endif %}"
                                placeholder="Eircode">
                         <label for="eircode">Eircode</label>
                         {% if form.eircode.errors %}<div class="text-danger" role="alert">{{ form.eircode.errors }}</div>{% endif %}
@@ -71,6 +75,7 @@
                                 class="form-control"
                                 id="gender_preference"
                                 name="gender_preference"
+                                value="{% if form.gender_preference.value %}{{ form.gender_preference.value }}{% endif %}"
                                 placeholder="Gender preference">
                             <option value="B">Male / Female</option>
                             <option value="M">Male</option>
@@ -88,6 +93,7 @@
                                 class="form-control"
                                 id="owner_occupied"
                                 name="owner_occupied"
+                                value="{% if form.owner_occupied.value %}{{ form.owner_occupied.value }}{% endif %}"
                                 placeholder="Owner occupied">
                             <option>Yes</option>
                             <option>Not</option>
@@ -104,6 +110,7 @@
                       id="description"
                       name="description"
                       class="w-100 mt-3 p-2"
+                      value="{% if form.description.value %}{{ form.description.value }}{% endif %}"
                       style="border-color: #eeeeee"></textarea>
             {% if form.description.errors %}<div class="text-danger" role="alert">{{ form.description.errors }}</div>{% endif %}
             <div class="form-floating mt-3">

@@ -37,11 +37,12 @@ class Image(models.Model):
 # Property Model
 class Property(models.Model):
 
-    eircode = models.CharField(max_length=10, unique=True, null=True)
+    eircode = models.CharField(
+        max_length=10, unique=True, null=True, blank=True)
     user = models.ForeignKey(
         User, on_delete=models.PROTECT, related_name='properties')
     landlord = models.ForeignKey(
-        User, on_delete=models.SET_NULL, related_name='my_properties', null=True)
+        User, on_delete=models.SET_NULL, related_name='my_properties', null=True, blank=True)
     address = models.TextField()
     area = models.CharField(max_length=30)
     property_type = models.CharField(max_length=50)
@@ -59,7 +60,7 @@ class Property(models.Model):
     # average rating
     rating = models.DecimalField(max_digits=2, decimal_places=1, default=0)
 
-    images = models.ManyToManyField(Image)
+    images = models.ManyToManyField(Image, blank=True)
 
     def __str__(self):
         return self.address
@@ -99,7 +100,8 @@ class Reply(models.Model):
 # Claim Ownership Model: a landlord can claim that he owns a property
 class Claim(models.Model):
 
-    eircode = models.CharField(max_length=10, unique=False, null=True)
+    eircode = models.CharField(
+        max_length=10, unique=False, null=True, blank=True)
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='claims')
@@ -107,7 +109,7 @@ class Claim(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     ownership_proof = models.OneToOneField(
-        Image, on_delete=models.CASCADE)
+        Image, on_delete=models.CASCADE, null=True, blank=True)
 
     verified = models.BooleanField(default=False)
 
