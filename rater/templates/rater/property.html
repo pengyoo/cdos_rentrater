@@ -45,9 +45,13 @@
                 border-radius: 0%">
         <div class="d-flex justify-content-between">
             <h3 style="color: black;">{{ property.address }}</h3>
-            {% if property.landlord.id != user.id %}
+            {% if not property.landlord or property.landlord.id != user.id %}
             <div>
                 <a class="nav-link" href="{% url 'claim_property' property.id %}"> <span class="badge text-bg-secondary" role="button">My Property? Claim!</span></a>
+            </div>
+            {% elif property.landlord.id == user.id %}
+            <div>
+                <span class="badge text-bg-success">My Property</span>
             </div>
             {% endif %}
         </div>
@@ -130,7 +134,7 @@
                                 <div class="p-2" style="font-size: 14px; color: gray;">{{ review.reply.reply }}</div>
                             </div>
                         </div>
-                        {% elif property.landlord.id != user.id %}
+                        {% elif property.landlord.id == user.id %}
 
                           <span class="badge text-bg-light mt-2" data-bs-toggle="collapse" href="#replyForm" role="button" aria-expanded="false" aria-controls="replyForm">reply</span>
                           <div class="collapse" id="replyForm">
