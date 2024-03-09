@@ -94,3 +94,25 @@ class Reply(models.Model):
 
     def __str__(self) -> str:
         return self.reply[:50] + '...'
+
+
+# Claim Ownership Model: a landlord can claim that he owns a property
+class Claim(models.Model):
+
+    eircode = models.CharField(max_length=10, unique=True, null=True)
+    property = models.ForeignKey(Property, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='claims')
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    ownership_proof = models.OneToOneField(
+        Image, on_delete=models.CASCADE)
+
+    verified = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.property.eircode
+
+    class Meta:
+        ordering = ['-created_at']

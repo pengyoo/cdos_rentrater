@@ -43,18 +43,24 @@
          class="card mt-3 p-3"
          style="border: none;
                 border-radius: 0%">
-        <h3 style="color: black;">{{ property.address }}</h3>
+        <div class="d-flex justify-content-between">
+            <h3 style="color: black;">{{ property.address }}</h3>
+            <div>
+                <a class="nav-link" href="{% url 'claim_property' property.id %}"> <span class="badge text-bg-secondary" role="button">My Property? Claim!</span></a>
+            </div>
+        </div>
         <div class="d-flex justify-content-start">
             <div>Eircode: {{ property.eircode }}</div>
-            <div class="ms-4">{{ property.property_type }}</div>
-            <div class="ms-4">Preferences: {{ property.gender_preference }}</div>
-            <div class="ms-4">Owner Occupied: {{ property.owner_occupied }}</div>
-        </div>
+            <div class="ms-5">{{ property.property_type }}</div>
+            <div class="ms-5">Preferences: {{ property.gender_preference }}</div>
+            <div class="ms-5">Owner Occupied: {{ property.owner_occupied }}</div>
+                   </div>
         <div class="mt-3">
             <h4>Description</h4>
             {{ property.description }}
         </div>
     </div>
+    {% if reviews %}
     <div id="reviews"
          class="card mt-3 p-3"
          style="border: none;
@@ -96,6 +102,7 @@
                             {{ review.rating }}</span>
                         </div>
                         <div style="font-size: 14px; color: gray;">{{ review.review }}</div>
+                        {% if review.reply %}
                         <div class="mt-2 p-1 d-flex justify-content-start align-items-baseline"
                              style="background-color: #ffffff;
                                     width: 100%">
@@ -121,57 +128,68 @@
                                 <div class="p-2" style="font-size: 14px; color: gray;">{{ review.reply.reply }}</div>
                             </div>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         {% endfor %}
     </div>
-    <div id="form"
-         class="mt-3 card p-3"
-         style="border: none;
-                border-radius: 0%">
-        <h4 class="py-2">Share my experience ...</h4>
-        <div class="d-flex justify-content-start">
-            <div>
-                {% if user.profile.avatar_url %}
-                    <img src="{{ user.profile.avatar_url }}"
-                         class="rounded-circle"
-                         style="display: inline-flex" />
-                {% elif not user.profile.avatar_url %}
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         width="32"
-                         height="32"
-                         fill="currentColor"
-                         class="bi bi-person-circle"
-                         viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                    </svg>
-                {% endif %}
-            </div>
-            <div class="ms-2" style="width: 100%;">
-                <div class="d-flex justify-content-start">
-                    <span style="font-size: large; font-weight: bolder;">Rating:</span> <output class="badge bg-primary ms-2" style="font-size: large;">0.0</output>
-                    <input type="range"
-                           class="form-range ms-2"
-                           min="-5"
-                           max="5"
-                           value="0.0"
-                           step="0.5"
-                           id="customRange3"
-                           oninput="this.previousElementSibling.value = this.value">
+    {% endif %}
+    <form method="post" action="{% url 'create_review'%}">
+        {% csrf_token %}
+        <div id="form"
+            class="mt-3 card p-3"
+            style="border: none;
+                    border-radius: 0%">
+            
+            <h4 class="py-2">Share my experience ...</h4>
+            <div class="d-flex justify-content-start">
+                <div>
+                    {% if user.profile.avatar_url %}
+                        <img src="{{ user.profile.avatar_url }}"
+                            class="rounded-circle"
+                            style="display: inline-flex" />
+                    {% elif not user.profile.avatar_url %}
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            width="32"
+                            height="32"
+                            fill="currentColor"
+                            class="bi bi-person-circle"
+                            viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                        </svg>
+                    {% endif %}
                 </div>
-                <textarea class="form-control rounded-0 mt-2"
-                          rows="4"
-                          style="background-color: #eeeeee"
-                          id="exampleFormControlTextarea1"
-                          placeholder="Share my experience ..."></textarea>
+                <div class="ms-2" style="width: 100%;">
+                    
+                        <input type="hidden" name="property_id" value="{{property.id}}" />
+                        <div class="d-flex justify-content-start">
+                            <span style="font-size: large; font-weight: bolder;">Rating:</span> <output class="badge bg-primary ms-2" style="font-size: large;">0.0</output>
+                            <input type="range"
+                                class="form-range ms-2"
+                                min="-5"
+                                max="5"
+                                value="0.0"
+                                name="rating"
+                                step="0.5"
+                                id="customRange3"
+                                oninput="this.previousElementSibling.value = this.value">
+                        </div>
+                        <textarea class="form-control rounded-0 mt-2"
+                                rows="4"
+                                style="background-color: #eeeeee"
+                                id="review"
+                                name="review"
+                                placeholder="Share my experience ..."></textarea>
+                
+                </div>
+            </div>
+            <div class="d-flex justify-content-end mt-3">
+                <button class="btn btn-secondary" type="submit">Submit</button>
             </div>
         </div>
-        <div class="d-flex justify-content-end mt-3">
-            <button class="btn btn-secondary">Submit</button>
-        </div>
-    </div>
+    </form>
 {% endblock main %}
 {% block side %}
     <div class="accordion" id="accordionPanelsStayOpenExample">

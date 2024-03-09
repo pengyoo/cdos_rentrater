@@ -16,11 +16,20 @@
         {% endif %}
         <form method="post" class="mt-2">
             {% csrf_token %}
-            <div class="form-floating">
+            <div class="form-floating mt-3">
+                <input type="file"
+                       accept="image/png, image/gif, image/jpeg"
+                       class="form-control"
+                       id="image1"
+                       placeholder="Ownership Prove">
+                <label for="image1">Ownership Prove</label>
+            </div>
+            <div class="form-floating mt-3">
                 <input type="text"
                        class="form-control"
                        id="address"
                        name="address"
+                       value="{{property.address}}"
                        placeholder="address">
                 <label for="address">Address</label>
                 {% if form.address.errors %}<div class="text-danger" role="alert">{{ form.address.errors }}</div>{% endif %}
@@ -30,6 +39,7 @@
                        class="form-control"
                        id="area"
                        name="area"
+                       value="{{property.area}}"
                        placeholder="Area">
                 <label for="area">Area</label>
                 {% if form.area.errors %}<div class="text-danger" role="alert">{{ form.area.errors }}</div>{% endif %}
@@ -41,6 +51,7 @@
                                 class="form-control"
                                 id="property_type"
                                 name="property_type"
+                                value="{{property.property_type}}"
                                 placeholder="Property type">
                             <option>Apartment</option>
                             <option>House</option>
@@ -58,6 +69,7 @@
                                class="form-control"
                                id="eircode"
                                name="eircode"
+                               value="{{property.eircode}}"
                                placeholder="Eircode">
                         <label for="eircode">Eircode</label>
                         {% if form.eircode.errors %}<div class="text-danger" role="alert">{{ form.eircode.errors }}</div>{% endif %}
@@ -71,6 +83,7 @@
                                 class="form-control"
                                 id="gender_preference"
                                 name="gender_preference"
+                                value="{{property.gender_preference}}"
                                 placeholder="Gender preference">
                             <option value="B">Male / Female</option>
                             <option value="M">Male</option>
@@ -88,6 +101,7 @@
                                 class="form-control"
                                 id="owner_occupied"
                                 name="owner_occupied"
+                                value="{{property.owner_occupied}}"
                                 placeholder="Owner occupied">
                             <option>Yes</option>
                             <option>Not</option>
@@ -104,16 +118,10 @@
                       id="description"
                       name="description"
                       class="w-100 mt-3 p-2"
+                      value="{{property.description}}"
                       style="border-color: #eeeeee"></textarea>
             {% if form.description.errors %}<div class="text-danger" role="alert">{{ form.description.errors }}</div>{% endif %}
-            <div class="form-floating mt-3">
-                <input type="file"
-                       accept="image/png, image/gif, image/jpeg"
-                       class="form-control"
-                       id="image1"
-                       placeholder="">
-                <label for="image1">Image</label>
-            </div>
+           
             <div class="form-floating mt-3">
                 <input type="file"
                        accept="image/png, image/gif, image/jpeg"
@@ -146,9 +154,9 @@
                        placeholder="">
                 <label for="image5">Image</label>
             </div>
-            <button class="btn btn-secondary w-100 py-2 my-3"
+            <button class="btn btn-primary w-100 py-2 my-3"
                     style="color: #ffffff"
-                    type="submit">Post</button>
+                    type="submit">Claim</button>
         </form>
     </main>
 {% endblock content %}

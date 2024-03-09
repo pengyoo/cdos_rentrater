@@ -19,8 +19,8 @@
                     <span class="badge  ms-2 {% if property.rating >= 3 %} bg-success {% elif property.rating < 3 and property.rating >= 2 %} bg-secondary {% elif property.rating == 0 %} bg-light {% elif property.rating < 0 and property.rating > -2 %} bg-warning {% elif property.rating < -2 %} bg-danger {% endif %}"
                           style="font-size: 16px">
                       <svg xmlns="http://www.w3.org/2000/svg"
-                           width="16"
-                           height="16"
+                           width="18"
+                           height="18"
                            fill="currentColor"
                            class="bi bi-bookmark-star-fill"
                            viewBox="0 0 16 16">
@@ -32,17 +32,11 @@
                   <li class="d-flex align-items-center me-3">
                     <span style="font-weight: bolder;
                                  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black">
-                      <svg xmlns="http://www.w3.org/2000/svg"
-                           width="18"
-                           height="18"
-                           fill="currentColor"
-                           class="bi bi-house-add-fill"
-                           viewBox="0 0 18 18">
-                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 1 1-1 0v-1h-1a.5.5 0 1 1 0-1h1v-1a.5.5 0 0 1 1 0" />
-                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
-                        <path d="m8 3.293 4.712 4.712A4.5 4.5 0 0 0 8.758 15H3.5A1.5 1.5 0 0 1 2 13.5V9.293z" />
-                      </svg>
-                      {{ property.room_type }}
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-check-fill" viewBox="0 0 16 16">
+                                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 4.697v4.974A4.5 4.5 0 0 0 12.5 8a4.5 4.5 0 0 0-1.965.45l-.338-.207z"/>
+                                  <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0m-1.993-1.679a.5.5 0 0 0-.686.172l-1.17 1.95-.547-.547a.5.5 0 0 0-.708.708l.774.773a.75.75 0 0 0 1.174-.144l1.335-2.226a.5.5 0 0 0-.172-.686"/>
+                                </svg>
+                      {{ property.eircode }}
                     </span>
                   </li>
                   <li class="d-flex align-items-center">

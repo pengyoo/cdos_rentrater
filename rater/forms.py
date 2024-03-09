@@ -30,3 +30,18 @@ class PropertyForm(forms.ModelForm):
         model = models.Property
         fields = ['address', 'area', 'property_type', 'eircode',
                   'gender_preference', 'owner_occupied', 'description']
+
+
+class ClaimForm(forms.ModelForm):
+
+    class Meta:
+        model = models.Claim
+        fields = ['eircode']
+
+
+class ReviewForm(forms.ModelForm):
+    property_id = forms.IntegerField()
+
+    class Meta:
+        model = models.Review
+        fields = ['rating', 'review', 'property_id']
