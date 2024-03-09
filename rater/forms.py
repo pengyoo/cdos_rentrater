@@ -45,3 +45,11 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = models.Review
         fields = ['rating', 'review', 'property_id']
+
+
+class ReplyForm(forms.ModelForm):
+    review_id = forms.IntegerField()
+
+    class Meta:
+        model = models.Reply
+        fields = ['reply', 'review_id']

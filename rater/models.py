@@ -99,7 +99,7 @@ class Reply(models.Model):
 # Claim Ownership Model: a landlord can claim that he owns a property
 class Claim(models.Model):
 
-    eircode = models.CharField(max_length=10, unique=True, null=True)
+    eircode = models.CharField(max_length=10, unique=False, null=True)
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='claims')

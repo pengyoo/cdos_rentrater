@@ -63,7 +63,6 @@ class SignUpView(CreateView):
 class AddPropertyView(CreateView):
     template_name = 'rater/add-property.html'
     form_class = forms.PropertyForm
-    success_url = reverse_lazy("home")
 
     # associate property with user
     def form_valid(self, form):
@@ -71,6 +70,9 @@ class AddPropertyView(CreateView):
 
         form.instance.user = user
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('property', kwargs={'pk': self.object.pk})
 
 
 # Update Property View
@@ -113,11 +115,13 @@ class ClaimPropertyView(CreateView):
         form.instance.property = property
         return super().form_valid(form)
 
+    def get_success_url(self):
+        return reverse_lazy('property', kwargs={'pk': self.object.property.pk})
+
 
 # Create Review View
 class CreateReviewView(CreateView):
     form_class = forms.ReviewForm
-    success_url = reverse_lazy("home")
 
     # associate review with property and user
     def form_valid(self, form):
@@ -127,3 +131,23 @@ class CreateReviewView(CreateView):
         form.instance.user = user
         form.instance.property = property
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('property', kwargs={'pk': self.object.property.pk})
+
+
+# Create Reply View
+class CreateReplyView(CreateView):
+    form_class = forms.ReplyForm
+
+    # associate review with property and user
+    def form_valid(self, form):
+        user = self.request.user
+        review_id = form.cleaned_data.get('review_id')
+        review = models.Review.objects.get(pk=review_id)
+        form.instance.user = user
+        form.instance.review = review
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('property', kwargs={'pk': self.object.review.property.pk})

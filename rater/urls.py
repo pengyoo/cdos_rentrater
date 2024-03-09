@@ -20,6 +20,9 @@ urlpatterns = [
     path("review/", views.CreateReviewView.as_view(),
          name="create_review"),
 
+    path("reply/", views.CreateReplyView.as_view(),
+         name="create_reply"),
+
     path('about/', views.AboutView.as_view(), name="about"),
 
     path('signup/', views.SignUpView.as_view(), name='signup'),
