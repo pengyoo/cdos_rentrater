@@ -49,7 +49,7 @@
             <h3 style="color: black;">{{ property.address }}</h3>
             {% if not property.landlord or property.landlord.id != user.id %}
                 <div>
-                    <a class="nav-link" href="{% url 'claim_property' property.id %}"> <span class="badge text-bg-secondary" role="button">My Property? Claim!</span></a>
+                    <a class="nav-link" href="{% url 'claim_property' property.id %}"> <span class="badge text-bg-secondary" role="button">Your Property? Claim!</span></a>
                 </div>
             {% elif property.landlord.id == user.id %}
                 <div>
@@ -151,11 +151,11 @@
                             {% elif property.landlord.id == user.id %}
                                 <span class="badge text-bg-light mt-2"
                                       data-bs-toggle="collapse"
-                                      href="#replyForm"
+                                      href="#replyForm{{ forloop.counter }}"
                                       role="button"
                                       aria-expanded="false"
-                                      aria-controls="replyForm">reply</span>
-                                <div class="collapse" id="replyForm">
+                                      aria-controls="replyForm{{ forloop.counter }}">reply</span>
+                                <div class="collapse" id="replyForm{{ forloop.counter }}">
                                     <form method="post" action="{% url 'create_reply' %}">
                                         {% csrf_token %}
                                         <div id="form"

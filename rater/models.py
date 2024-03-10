@@ -22,10 +22,10 @@ class UserProfile(models.Model):
 # Image Model
 class Image(models.Model):
 
-    title = models.CharField(max_length=50)
-    description = models.CharField(max_length=255)
+    title = models.CharField(max_length=50, null=True, blank=True)
+    description = models.CharField(max_length=255, null=True, blank=True)
     url = models.URLField()
-    sort = models.IntegerField()
+    sort = models.IntegerField(default=0)
 
     def __str__(self) -> str:
         return self.title
