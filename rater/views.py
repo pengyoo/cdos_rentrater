@@ -7,9 +7,17 @@ from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 
+from django.conf import settings
+
+from uuid import uuid4
+import os
+
 from . import models
 from . import filters
 from . import forms
+
+
+from .utils import upload_file
 
 
 # Home page view
@@ -64,16 +72,38 @@ class AddPropertyView(CreateView):
     template_name = 'rater/add-property.html'
     form_class = forms.PropertyForm
 
-    # associate property with user
     def form_valid(self, form):
+
+        # associate current with property
         user = self.request.user
-
         form.instance.user = user
-        return super().form_valid(form)
 
+        # Upload image
+        image = form.cleaned_data.get("image")
+        object_name = settings.S3_IMAGE_PATH + \
+            str(uuid4()) + os.path.splitext(image.name)[1].lower()
+        upload_file(image, object_name)
+
+        # Construct public URL of image
+        image_url = f'https://{settings.S3_BUCKET}.s3.amazonaws.com/{object_name}'
+
+        # Save image object
+        image_saved = models.Image.objects.create(
+            title=os.path.splitext(image.name)[0], url=image_url)
+
+        # save property before associate it with image (many-to-many)
+        return_value = super().form_valid(form)
+
+        # associate image with property
+        form.instance.images.add(image_saved)
+
+        return return_value
+
+    # echo form data if data is invalid
     def form_invalid(self, form):
         return self.render_to_response(self.get_context_data(form=form))
 
+    # redirect to published property
     def get_success_url(self):
         return reverse_lazy('property', kwargs={'pk': self.object.pk})
 

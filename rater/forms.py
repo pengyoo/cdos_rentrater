@@ -26,6 +26,8 @@ class SignUpForm(UserCreationForm):
 
 class PropertyForm(forms.ModelForm):
 
+    image = forms.FileField()
+
     class Meta:
         model = models.Property
         fields = ['address', 'area', 'property_type', 'eircode',

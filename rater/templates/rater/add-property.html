@@ -14,7 +14,7 @@
         {% if form.non_field_errors %}
             <div class="alert alert-danger pt-2 p-0" role="alert">{{ form.non_field_errors }}</div>
         {% endif %}
-        <form method="post" class="mt-2">
+        <form method="post" class="mt-2" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-floating">
                 <input type="text"
@@ -118,40 +118,9 @@
                        accept="image/png, image/gif, image/jpeg"
                        class="form-control"
                        id="image1"
+                       name="image"
                        placeholder="">
                 <label for="image1">Image</label>
-            </div>
-            <div class="form-floating mt-3">
-                <input type="file"
-                       accept="image/png, image/gif, image/jpeg"
-                       class="form-control"
-                       id="image2"
-                       placeholder="">
-                <label for="image2">Image</label>
-            </div>
-            <div class="form-floating mt-3">
-                <input type="file"
-                       accept="image/png, image/gif, image/jpeg"
-                       class="form-control"
-                       id="image3"
-                       placeholder="">
-                <label for="image3">Image</label>
-            </div>
-            <div class="form-floating mt-3">
-                <input type="file"
-                       accept="image/png, image/gif, image/jpeg"
-                       class="form-control"
-                       id="image4"
-                       placeholder="">
-                <label for="image4">Image</label>
-            </div>
-            <div class="form-floating mt-3">
-                <input type="file"
-                       accept="image/png, image/gif, image/jpeg"
-                       class="form-control"
-                       id="image5"
-                       placeholder="">
-                <label for="image5">Image</label>
             </div>
             <button class="btn btn-secondary w-100 py-2 my-3"
                     style="color: #ffffff"
