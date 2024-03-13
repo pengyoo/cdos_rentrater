@@ -72,6 +72,7 @@ class AddPropertyView(CreateView):
     template_name = 'rater/add-property.html'
     form_class = forms.PropertyForm
 
+    # Process image upload and relationships with other objects
     def form_valid(self, form):
 
         # associate current with property
@@ -82,10 +83,7 @@ class AddPropertyView(CreateView):
         image = form.cleaned_data.get("image")
         object_name = settings.S3_IMAGE_PATH + \
             str(uuid4()) + os.path.splitext(image.name)[1].lower()
-        upload_file(image, object_name)
-
-        # Construct public URL of image
-        image_url = f'https://{settings.S3_BUCKET}.s3.amazonaws.com/{object_name}'
+        image_url = upload_file(image, object_name)
 
         # Save image object
         image_saved = models.Image.objects.create(
