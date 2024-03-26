@@ -20,12 +20,13 @@
 {% endblock style %}
 {% block content %}
     <main class="card p-4 form-signin w-100 m-auto mt-5">
-        <form method="post">
+        <form method="post" action="{% url 'signin' %}">
             {% csrf_token %}
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
             {% if form.non_field_errors %}
                 <div class="alert alert-danger pt-2 p-0" role="alert">{{ form.non_field_errors }}</div>
             {% endif %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
             <div class="form-floating">
                 <input type="text"
                        name="username"

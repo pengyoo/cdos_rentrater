@@ -4,8 +4,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core import validators
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 
 from . import models
+
+
+class CustomAuthenticationForm(AuthenticationForm):
+    next = forms.CharField(widget=forms.HiddenInput, required=False)
 
 
 class SignUpForm(UserCreationForm):

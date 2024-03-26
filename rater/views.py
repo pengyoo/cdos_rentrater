@@ -6,8 +6,10 @@ from django.views.generic import DetailView, ListView, TemplateView, CreateView,
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView
 from django.conf import settings
+from django.http import HttpResponseRedirect
 
 from uuid import uuid4
 import os
@@ -67,8 +69,22 @@ class SignUpView(CreateView):
     #     return super().form_valid(form)
 
 
+class CustomLoginView(LoginView):
+    authentication_form = forms.CustomAuthenticationForm
+
+    def form_valid(self, form):
+        redirect_to = self.request.POST.get('next')
+        response = super().form_valid(form)
+        if redirect_to:
+            return HttpResponseRedirect(redirect_to)
+        else:
+            return response
+
+
 # Add Property View
-class AddPropertyView(CreateView):
+class AddPropertyView(LoginRequiredMixin, CreateView):
+    login_url = "/signin/"
+    redirect_field_name = "next"
     template_name = 'rater/add-property.html'
     form_class = forms.PropertyForm
 
@@ -107,7 +123,9 @@ class AddPropertyView(CreateView):
 
 
 # Update Property View
-class UpdatePropertyView(UpdateView):
+class UpdatePropertyView(LoginRequiredMixin, UpdateView):
+    login_url = "/signin/"
+    redirect_field_name = "next"
     template_name = 'rater/update-property.html'
     form_class = forms.PropertyForm
     model = models.Property
@@ -116,7 +134,9 @@ class UpdatePropertyView(UpdateView):
 
 
 # Claim Property View
-class ClaimPropertyView(CreateView):
+class ClaimPropertyView(LoginRequiredMixin, CreateView):
+    login_url = "/signin/"
+    redirect_field_name = "next"
     template_name = 'rater/claim-property.html'
     form_class = forms.ClaimForm
     success_url = reverse_lazy("home")
@@ -151,7 +171,10 @@ class ClaimPropertyView(CreateView):
 
 
 # Create Review View
-class CreateReviewView(CreateView):
+class CreateReviewView(LoginRequiredMixin, CreateView):
+    login_url = "/signin/"
+    redirect_field_name = "next"
+
     form_class = forms.ReviewForm
 
     # associate review with property and user
@@ -168,7 +191,10 @@ class CreateReviewView(CreateView):
 
 
 # Create Reply View
-class CreateReplyView(CreateView):
+class CreateReplyView(LoginRequiredMixin, CreateView):
+    login_url = "/signin/"
+    redirect_field_name = "next"
+
     form_class = forms.ReplyForm
 
     # associate review with property and user
