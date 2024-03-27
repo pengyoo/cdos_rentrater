@@ -19,7 +19,8 @@ SECRET_KEY = 'django-insecure-q+876v5ok5)-pt^r&^3@%1ep=z04o=-ng90xikczn1+@to+v*0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['d5d5f9065c6b477da340a081c1aaa450.vfs.cloud9.eu-west-1.amazonaws.com']
+CSRF_TRUSTED_ORIGINS = ['https://d5d5f9065c6b477da340a081c1aaa450.vfs.cloud9.eu-west-1.amazonaws.com']
 
 
 # Application definition
@@ -105,6 +106,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
