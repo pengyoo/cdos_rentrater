@@ -1,10 +1,10 @@
 version: 0.2
 env:
   secrets-manager:
-    LOGIN: x22196242-rentrater-sonar/prod/sonarcloud:sonartoken
-    HOST: x22196242-rentrater-sonar/prod/sonarcloud:HOST
-    Organization: x22196242-rentrater-sonar/prod/sonarcloud:Organization
-    Project: x22196242-rentrater-sonar/prod/sonarcloud:Project
+    LOGIN: x22196242-rentrater-sonar:sonartoken
+    HOST: x22196242-rentrater-sonar:HOST
+    Organization: x22196242-rentrater-sonar:Organization
+    Project: x22196242-rentrater-sonar:Project
 phases:
   pre_build:
     commands:
