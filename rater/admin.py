@@ -2,13 +2,17 @@ from django.contrib import admin
 from . import models
 from django.utils.html import format_html
 
+"""
+Register models to admin system
+
+"""
+
 # Register models.
 admin.site.register(models.UserProfile)
 admin.site.register(models.Claim)
 
-# Custimize display fields for Image model
 
-
+""" Custimize display fields for Image model """
 @admin.register(models.Image)
 class ImageAdmin(admin.ModelAdmin):
     list_display = ['title', 'image']
@@ -23,7 +27,7 @@ class ImageAdmin(admin.ModelAdmin):
         }
 
 
-# Custimize display fields for Property model
+""" Custimize display fields for Property model """
 @admin.register(models.Property)
 class PropertyAdmin(admin.ModelAdmin):
     list_display = ['image', 'area', 'address', 'eircode', 'user', 'landlord']
@@ -38,13 +42,13 @@ class PropertyAdmin(admin.ModelAdmin):
         }
 
 
-# Custimize display fields for Review model
+""" Custimize display fields for Review model """
 @admin.register(models.Review)
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ['review', 'rating', 'user']
 
 
-# Custimize display fields for Reply model
+""" Custimize display fields for Reply model """
 @admin.register(models.Reply)
 class ReplyAdmin(admin.ModelAdmin):
     list_display = ['reply', 'user']
