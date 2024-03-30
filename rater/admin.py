@@ -5,9 +5,8 @@ Register models to admin system
 """
 
 from django.contrib import admin
-from . import models
 from django.utils.html import format_html
-
+from . import models
 
 # Register models.
 admin.site.register(models.UserProfile)
