@@ -15,7 +15,7 @@ def create_profile(sender, instance, created, **kwargs):
 
 # Use signals to associate property with a landlord when it's verified by admin user
 @receiver(post_save, sender=Claim)
-def create_profile(sender, instance, created, **kwargs):
+def update_landlord(sender, instance, created, **kwargs):
     if instance.verified:
         property = Property.objects.get(pk=instance.property.id)
         property.landlord = instance.user
@@ -24,7 +24,7 @@ def create_profile(sender, instance, created, **kwargs):
 
 # Use signals to calculate average rating when a user rate a property
 @receiver(post_save, sender=Review)
-def create_profile(sender, instance, created, **kwargs):
+def update_rating(sender, instance, created, **kwargs):
     if created:
         avg_rating = Review.objects.filter(property=instance.property).aggregate(
             avg_rating=Avg('rating'))['avg_rating']

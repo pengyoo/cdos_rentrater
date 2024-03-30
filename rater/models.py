@@ -27,8 +27,8 @@ class Image(models.Model):
     url = models.URLField()
     sort = models.IntegerField(default=0)
 
-    def __str__(self) -> str:
-        return self.title
+    def __str__(self):
+        return str(self.title)
 
     class Meta:
         ordering = ['sort']
@@ -63,7 +63,7 @@ class Property(models.Model):
     images = models.ManyToManyField(Image, blank=True)
 
     def __str__(self):
-        return self.address
+        return str(self.address)
 
     class Meta:
         ordering = ['-created_at']
@@ -80,7 +80,7 @@ class Review(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
-        return self.review[:50] + '...'
+        return str(self.review)[:50] + '...'
 
     class Meta:
         ordering = ['created_at']
@@ -94,7 +94,7 @@ class Reply(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
-        return self.reply[:50] + '...'
+        return str(self.reply)[:50] + '...'
 
 
 # Claim Ownership Model: a landlord can claim that he owns a property
@@ -114,7 +114,7 @@ class Claim(models.Model):
     verified = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.property.eircode
+        return str(self.property.eircode)
 
     class Meta:
         ordering = ['-created_at']
