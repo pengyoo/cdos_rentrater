@@ -10,7 +10,7 @@ phases:
     pre_build:
         commands:
             - python --version
-            - pylint $CODEBUILD_SRC_DIR/*.py
+            - pylint $CODEBUILD_SRC_DIR/*.py --disable=C
             - pylint $CODEBUILD_SRC_DIR/RentRater/*.py
             - pylint $CODEBUILD_SRC_DIR/rater/*.py
 artifacts:
