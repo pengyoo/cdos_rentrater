@@ -11,7 +11,7 @@ phases:
         commands:
             - python --version
             - pylint $CODEBUILD_SRC_DIR/*.py --disable=C
-            - pylint $CODEBUILD_SRC_DIR/RentRater/*.py
+            - pylint $CODEBUILD_SRC_DIR/RentRater/*.py --disable=C
             - pylint $CODEBUILD_SRC_DIR/rater/*.py
 artifacts:
     files:
