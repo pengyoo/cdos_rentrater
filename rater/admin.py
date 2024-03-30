@@ -47,10 +47,9 @@ class PropertyAdmin(admin.ModelAdmin):
 
     def image(self, property):
         
-         """ display image """
+        """ display image """
         
-        return format_html('<img src="{}" class="thumbnail"/>',
-                           property.images.first().url)
+        return format_html('<img src="{}" class="thumbnail"/>',property.images.first().url)
 
     class Media:
         
