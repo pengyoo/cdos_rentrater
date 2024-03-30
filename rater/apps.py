@@ -7,5 +7,4 @@ class RaterConfig(AppConfig):
     name = 'rater'
 
     def ready(self):
-        """ import signals """
         import rater.signals
