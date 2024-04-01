@@ -25,7 +25,7 @@ AWS_SECRET_NAME = 'x22196242/rentrater/prod'
 secret_value = json.loads(get_secret(AWS_SECRET_NAME))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secret_value['SECRET_KEY']
+SECRET_KEY = secret_value['DJANGO_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
