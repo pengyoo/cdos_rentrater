@@ -1,4 +1,5 @@
 from typing import Any
+from urllib.parse import urlparse
 from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django_filters.views import FilterView
@@ -20,6 +21,16 @@ from . import forms
 
 
 from .utils import upload_file
+
+
+def redirect(url):
+    """ Controll redirect urls """
+    if not url.startswith("http") and not url.startswith("https"):
+        return HttpResponseRedirect(url)
+    parsed_url = urlparse(url)
+    if parsed_url.netloc in settings.ALLOWED_HOSTS:
+        return HttpResponseRedirect("https://" + parsed_url.netloc)
+    return HttpResponseRedirect("/")
 
 
 # Home page view
@@ -76,7 +87,7 @@ class CustomLoginView(LoginView):
         redirect_to = self.request.POST.get('next')
         response = super().form_valid(form)
         if redirect_to:
-            return HttpResponseRedirect(redirect_to)
+            return redirect(redirect_to)
         else:
             return response
 
