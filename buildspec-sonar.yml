@@ -1,10 +1,10 @@
 version: 0.2
 env:
   secrets-manager:
-    LOGIN: x22196242-rentrater-sonar:sonartoken
-    HOST: x22196242-rentrater-sonar:HOST
-    Organization: x22196242-rentrater-sonar:Organization
-    Project: x22196242-rentrater-sonar:Project
+    LOGIN: x22196242/rentrater/prod:SONAR_TOKEN
+    HOST: x22196242/rentrater/prod:SONAR_HOST
+    Organization: x22196242/rentrater/prod:SONAR_ORGANIZATION
+    Project: x22196242/rentrater/prod:SONAR_PROJECT
 phases:
   pre_build:
     commands:
@@ -20,3 +20,4 @@ phases:
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
       - cat result.json
       - if [ $(jq -r '.projectStatus.status' result.json) = ERROR ] ; then $CODEBUILD_BUILD_SUCCEEDING -eq 0 ;fi
+      - echo $CODEBUILD_BUILD_SUCCEEDING

@@ -13,7 +13,7 @@ def upload_file(file_name, object_name, bucket=settings.S3_BUCKET):
     # Upload the file
     s3_client = boto3.client('s3')
     try:
-        response = s3_client.upload_fileobj(
+        s3_client.upload_fileobj(
             file_name, bucket, object_name)
 
         # Set file can be accessed publicly
