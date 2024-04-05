@@ -47,7 +47,11 @@
                 border-radius: 0%">
         <div class="d-flex justify-content-between">
             <h3 style="color: black;">{{ property.address }}</h3>
-            {% if not property.landlord %}
+            {% if property.landlord and property.landlord.id != user.id %}
+                <div>
+                    <span class="badge text-bg-warning">Owner: {{property.landlord}}</span>
+                </div>
+            {% elif not property.landlord %}
                 <div>
                     <a class="nav-link" href="{% url 'claim_property' property.id %}"> <span class="badge text-bg-secondary" role="button">Your Property? Claim!</span></a>
                 </div>
