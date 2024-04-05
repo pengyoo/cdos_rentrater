@@ -1,11 +1,14 @@
 version: 0.2
 env:
+# Use Secrets Manager to store variables used by sonar-scanner
   secrets-manager:
     LOGIN: x22196242/rentrater/prod:SONAR_TOKEN
     HOST: x22196242/rentrater/prod:SONAR_HOST
     Organization: x22196242/rentrater/prod:SONAR_ORGANIZATION
     Project: x22196242/rentrater/prod:SONAR_PROJECT
 phases:
+
+  # Install sonar-scanner
   pre_build:
     commands:
       - apt-get update
@@ -13,6 +16,8 @@ phases:
       - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
       - unzip ./sonar-scanner-cli-5.0.1.3006-linux.zip
       - export PATH=$PATH:$PWD/sonar-scanner-5.0.1.3006-linux/bin/
+  
+  # execute sonar-scanner with parameters
   build:
     commands:
       - sonar-scanner -X -Dsonar.login=$LOGIN -Dsonar.projectKey=$Project -Dsonar.host.url=$HOST -Dsonar.organization=$Organization
