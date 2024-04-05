@@ -26,12 +26,11 @@ secret_value = json.loads(get_secret(AWS_SECRET_NAME))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = secret_value['DJANGO_SECRET_KEY']
-# SECRET_KEY = 'django-insecure-q+876v5ok5)-pt^r&^3@%1ep=z04o=-ng90xikczn1+@to+v*0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.31.45.192', '34.241.53.5','d5d5f9065c6b477da340a081c1aaa450.vfs.cloud9.eu-west-1.amazonaws.com', 'x22196242-rentrater-env.eba-qwpzib2f.eu-west-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['d5d5f9065c6b477da340a081c1aaa450.vfs.cloud9.eu-west-1.amazonaws.com', 'x22196242-rentrater-env.eba-qwpzib2f.eu-west-1.elasticbeanstalk.com']
 CSRF_TRUSTED_ORIGINS = ['https://d5d5f9065c6b477da340a081c1aaa450.vfs.cloud9.eu-west-1.amazonaws.com']
 
 
