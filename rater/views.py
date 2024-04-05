@@ -22,6 +22,8 @@ from . import forms
 
 from .utils import upload_file
 
+LOGIN_URL = '/signin/'
+
 
 def redirect(url):
     """ Controll redirect urls """
@@ -94,7 +96,7 @@ class CustomLoginView(LoginView):
 
 # Add Property View
 class AddPropertyView(LoginRequiredMixin, CreateView):
-    login_url = "/signin/"
+    login_url = LOGIN_URL
     redirect_field_name = "next"
     template_name = 'rater/add-property.html'
     form_class = forms.PropertyForm
@@ -135,7 +137,7 @@ class AddPropertyView(LoginRequiredMixin, CreateView):
 
 # Update Property View
 class UpdatePropertyView(LoginRequiredMixin, UpdateView):
-    login_url = "/signin/"
+    login_url = LOGIN_URL
     redirect_field_name = "next"
     template_name = 'rater/update-property.html'
     form_class = forms.PropertyForm
@@ -146,7 +148,7 @@ class UpdatePropertyView(LoginRequiredMixin, UpdateView):
 
 # Claim Property View
 class ClaimPropertyView(LoginRequiredMixin, CreateView):
-    login_url = "/signin/"
+    login_url = LOGIN_URL
     redirect_field_name = "next"
     template_name = 'rater/claim-property.html'
     form_class = forms.ClaimForm
@@ -183,7 +185,7 @@ class ClaimPropertyView(LoginRequiredMixin, CreateView):
 
 # Create Review View
 class CreateReviewView(LoginRequiredMixin, CreateView):
-    login_url = "/signin/"
+    login_url = LOGIN_URL
     redirect_field_name = "next"
 
     form_class = forms.ReviewForm
@@ -203,7 +205,7 @@ class CreateReviewView(LoginRequiredMixin, CreateView):
 
 # Create Reply View
 class CreateReplyView(LoginRequiredMixin, CreateView):
-    login_url = "/signin/"
+    login_url = LOGIN_URL
     redirect_field_name = "next"
 
     form_class = forms.ReplyForm
