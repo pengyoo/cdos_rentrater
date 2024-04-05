@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Get Secret Key from AWS Secrets Manager 
 def get_secret(secret_name):
-    client = boto3.client('secretsmanager')
+    client = boto3.client('secretsmanager', region_name='eu-west-1')
     response = client.get_secret_value(SecretId=secret_name)
     secret_string = response['SecretString']
     return secret_string
@@ -127,5 +127,6 @@ LOGIN_REDIRECT_URL = '/'
 
 
 # AWS s3
-S3_BUCKET = 'elasticbeanstalk-eu-west-1-845708981828'
+# S3_BUCKET = 'elasticbeanstalk-eu-west-1-845708981828'
+S3_BUCKET = 'x22196242-rentrater'
 S3_IMAGE_PATH = 'images/rentrater/'
