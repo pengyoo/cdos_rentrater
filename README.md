@@ -1,13 +1,53 @@
-### RentRater
+## RentRater
 
-Due to the housing crisis in Ireland, it is very difficult for people to find suitable accommodation nationwide in recent years. And the rental market is becoming more and more dominated by ‘sellers’, some dishonest landlords cover
-up potential problems of their properties, making it difficult to protect tenants’ rights.
+### Overview
+RentRater is a rent review web application developed to address the housing crisis in Ireland. With an increasingly seller-dominated rental market and some dishonest landlords hiding property issues, it has become challenging to protect tenants' rights. RentRater aims to empower tenants by providing a platform to rate and review rental properties, fostering a community of responsible tenants and landlords.
 
-In order to solve this problem, I developed a rent review web application, RentRater, allowing tenants to rate and review rental properties (rooms). RentRater also aims to foster a community of responsible tenants and landlords.
-RentRater is developed in Python and the Django framework.
+### Features
+Rate and Review: Tenants can rate and review rental properties (rooms), helping others make informed decisions.
 
-With the help of AWS and its related cloud services, I am trying to implement it in a cloud-native approach. I use Cloud9 as the development environment, S3 as a cloud object storage service, and Elastic Beanstalk as the deployment environment. Ultimately,
-through the combination of Code Pipeline, Code Build, Github, and the other services and tools previously mentioned to automate the continuous integration (CI) and continuous delivery (CD) process. I also use Pylint as a static analysis tool, and SonarCloud as a static application security testing tool, and integrate them into the CI/CD pipeline, to implement a seamless software development lifecycle and ensure code quality.
+Community Building: Encourages responsible behavior among tenants and landlords.
 
-Finally, I implemented a straightforward house rent rating and review application, automated the CI/CD process through the use of fully managed AWS cloud services, conducted static analysis and static application security analysis over the source code,
-significantly improved the development and operation efficiency, and realized the security of software.
+### Technology Stack
+RentRater is built using:
+
+Python
+
+Django Framework
+
+Cloud-Native Implementation
+
+To ensure scalability, reliability, and efficiency, RentRater is implemented using a cloud-native approach with AWS services:
+
+Development Environment: AWS Cloud9
+
+Storage: AWS S3
+
+Deployment: AWS Elastic Beanstalk
+
+Continuous Integration/Continuous Delivery (CI/CD):
+
+AWS CodePipeline
+
+AWS CodeBuild
+
+GitHub
+
+### CI/CD Pipeline
+
+The CI/CD pipeline automates the software development lifecycle, integrating various tools to ensure code quality and security:
+
+Static Analysis: Pylint
+
+Static Application Security Testing (SAST): SonarCloud
+
+### Achievements
+Comprehensive Rating and Review System: Implemented a user-friendly platform for house rent ratings and reviews.
+
+Automated CI/CD Process: Utilized fully managed AWS services to streamline the CI/CD process.
+
+Enhanced Code Quality and Security: Integrated static analysis and security testing tools into the CI/CD pipeline.
+
+Improved Efficiency: Significantly boosted development and operational efficiency through automation and cloud services.
+
+RentRater not only simplifies the process of finding and reviewing rental properties but also ensures a secure and efficient development lifecycle, ultimately enhancing the overall user experience and fostering a trustworthy rental market.
